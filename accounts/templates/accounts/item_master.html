@@ -1,0 +1,168 @@
+   <!-- Main Sidebar Container -->
+   <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a class="brand-link text-center">
+      <span class="brand-text font-weight-light px-2"><b>UMASHANKAR</b></span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="./index.php?page=home" class="nav-link">     
+            <i class="fas fa-home nav-icon"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
+
+        
+            <li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-calculator"></i>
+              <p>
+           GC MASTER
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./index.php?page=gc_insert" class="nav-link nav-gc_insert tree-item">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>GS ADD</p>
+                </a>
+  </li>
+
+<li class="nav-item">
+<a href="./index.php?page=gc_list" class="nav-link nav-gc_list tree-item">
+<i class="far fa-circle nav-icon"></i>
+<p>GS LIST</p>
+</a>
+</li>
+
+
+<li class="nav-item">
+<a href="./index.php?page=party_gc" class="nav-link nav-party_gc tree-item">
+<i class="far fa-circle nav-icon"></i>
+<p>PARTY GC</p>
+</a>
+</li>
+
+</ul>
+
+            <li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-calculator"></i>
+              <p>
+           TRIP SHEET
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./index.php?page=haveri" class="nav-link nav-haveri tree-item">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>HAVERI</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index.php?page=byadgi" class="nav-link nav-byadgi tree-item">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>BYDAGI</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index.php?page=renebennur" class="nav-link nav-renebennur tree-item">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>RENEBENNUR</p>
+                </a>
+              </li>
+
+            
+              <li class="nav-item">
+                <a href="./index.php?page=report" class="nav-link nav-report tree-item">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>DATE WISE</p>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a href="./index.php?page=all_report" class="nav-link nav-all_report tree-item">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>ALL</p>
+                </a>
+              </li>
+            </ul>
+
+            <li class="nav-item menu-close">
+           <a href="#" class="nav-link active">
+             <i class="nav-icon fas fa-calculator"></i>
+             <p>
+          PARTY MASTER
+               <i class="right fas fa-angle-left"></i>
+             </p>
+           </a>
+           <ul class="nav nav-treeview">
+             <li class="nav-item">
+               <a href="./index.php?page=consignor_list" class="nav-link nav-consignor_list tree-item">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>CONSIGNOR LIST</p>
+               </a>
+             </li>
+           </ul>
+           <ul class="nav nav-treeview">
+             <li class="nav-item">
+               <a href="./index.php?page=consignee_list" class="nav-link nav-consignee_list tree-item">
+                 <i class="far fa-circle nav-icon"></i>
+          <p>CONSIGNEE LIST</p>
+          </a>
+          </li> 
+           </ul>
+
+            <ul class="nav nav-treeview">
+            </ul>
+            </ul>
+          </li>          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <script>
+  	$(document).ready(function(){
+      var page = '<?php echo isset($_GET['page']) ? $_GET['page'] : 'home' ?>';
+  		var s = '<?php echo isset($_GET['s']) ? $_GET['s'] : '' ?>';
+      if(s!='')
+        page = page+'_'+s;
+  		if($('.nav-link.nav-'+page).length > 0){
+             $('.nav-link.nav-'+page).addClass('active')
+  			if($('.nav-link.nav-'+page).hasClass('tree-item') == true){
+            $('.nav-link.nav-'+page).closest('.nav-treeview').siblings('a').addClass('active')
+  				$('.nav-link.nav-'+page).closest('.nav-treeview').parent().addClass('menu-open')
+  			}
+        if($('.nav-link.nav-'+page).hasClass('nav-is-tree') == true){
+          $('.nav-link.nav-'+page).parent().addClass('menu-open')
+        }
+
+  		}
+     
+  	})
+  </script>

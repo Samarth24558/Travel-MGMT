@@ -1,0 +1,204 @@
+{% include 'accounts/header.html' %}
+{% include 'accounts/sidebar.html' %}
+{% include 'accounts/topbar.html' %}
+
+
+          <style>
+            .card-footer {
+              background-color: #ffff !important;
+            }
+          </style>
+
+
+          <div class="content-wrapper">
+            <div class="container-fluid">
+            <div class="content-header">
+            <section class="content">
+          <div class="col-lg-12">
+            <div class="card card-outline card-primary">
+              <div class="card-body">
+          
+              
+                  <div class="row">
+                     
+                      
+                    <div class="col-md-12">
+                      <div id="msg" class="">
+                      </div>
+                     
+                      <h3 class="text-primary">NEW GC ADD</h3>
+                      <br>
+                      <form method='POST' action="" >
+                        {% csrf_token %}
+                      <div class="row">
+                        <div class="col-sm-4 form-group ">
+                            <label for="" class="control-label">GC No</label>
+                            <input type="text" name="gc_no" id="gc_no" cols="30" rows="2" class="form-control"  value="" >
+                            
+                        </div>  
+          
+                                              
+                          <div class="col-sm-4 form-group ">
+                            <label for="" class="control-label">GC Date</label>
+                            <input type="date" name="gc_dt" id="gc_dt" cols="30" rows="2" class="form-control" value="" >
+                         
+                          </div>
+                            <div class="col-sm-4 form-group ">
+                          <label for="" class="control-label">Invoice Date</label>
+                          <input type="date" name="invoice_dt" id="invoice_dt" cols="30" rows="2" class="form-control" value="" >
+                        </div>
+                           
+          
+                          <div class="col-sm-4 form-group ">
+                            <label for="" class="control-label">Consignor Name</label>
+                             <input type="text" name="consignor_name" id="consignor_name" cols="30" rows="2" class="form-control" value="">
+                           
+           </div>  
+           
+                    
+          
+                    
+                      <div class="col-sm-4 form-group ">
+                            <label for="" class="control-label">Consignee Name</label>
+                            <input type="text" name="consignee_name" id="consignee_name" cols="30" rows="2" class="form-control" value="" >
+                           
+           </div>  
+          
+                       
+          
+                         
+           <div class="col-sm-4 form-group ">
+                          <label for="" class="control-label">Vechile No</label>
+                          <input type="text" name="vechile_no" id="vechile_no" cols="30" rows="2" class="form-control" value="" >
+                        </div>
+          
+                       
+          
+                        <div class="col-sm-4 form-group ">
+                          <label for="" class="control-label">From</label>
+                          <input type="text" name="from_addr" id="from_addr" cols="30" rows="2" class="form-control" value="HUBLI" readonly>
+                        </div>
+                      
+          
+                    
+                         <div class="col-sm-4 form-group ">
+                          <label for="" class="control-label">To</label>
+                          <select type="text" name="to_addr" id="to_addr" cols="30" rows="2" class="form-control" value="" required>
+          <option value="">SELECT CITY</option>
+          <option value="HAVERI">HAVERI</option>
+          <option value="BYADGI">BYADGI</option>
+          <option value="RANEBENNUR">RANEBENNUR</option>
+          </select>
+                        </div>
+          
+                       
+           
+                        
+                        <div class="col-sm-4 form-group ">
+                          <label for="" class="control-label">Invoice No</label>
+                          <input type="text" name="invoice_no" id="invoice_no" cols="30" rows="2" class="form-control" value="" >
+                        </div>
+                      
+          
+                   
+                       
+          
+                        <div class="col-sm-4 form-group ">
+                          <label for="" class="control-label">Invoice Amount</label>
+                          <input type="text" name="invoice_amount" id="invoice_amount" cols="30" rows="2" class="form-control" value="" >
+                        </div>
+          
+                      
+          
+                      
+                       <div class="col-sm-4 form-group ">
+                            <label for="" class="control-label">LOT (NOTE)</label>
+                            <input type="text" name="note" id="note" cols="30" rows="2" class="form-control" value=""  >
+                            
+                          </div>
+                    </div>
+          
+             <h4><b>Billing Information</b></h4>
+          <hr>
+          <div class="card">
+          
+          <table class="table table-bordered table-responsive" width="100%" id="parcel-items">
+              <thead>
+                  <tr>     
+                      
+                      <th style= "width: 35%">Articles</th>
+                      <th style= "width: 35%">TOPAY</th>
+                      <th style= "width: 35%">PAID</th>
+                    
+                         
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                
+                
+                <td><input type="text" name="articles" id="articles" class="form-control" value="" ></td>
+          
+                <td><input type="text" name="topay" id="topay" class="form-control" value="" ></td>
+          
+                <td><input type="text" name="paid" id="paid" class="form-control" value=""></td>
+          
+               
+                
+          
+                  
+                    <td><button class="btn btn-sm btn-danger" type="button" onclick="$(this).closest('tr').remove() && calc()"><i class="fa fa-times"></i></button></td>
+                  
+                </tr>
+              </tbody>
+          
+              
+                
+             
+              
+            </table> 
+            
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-end">
+                  <button class="btn btn-sm btn-primary bg-gradient-primary" type="button" id="new_parcel"><i class="fa fa-item"></i> Add Item</button>
+                </div>
+          
+                </div>
+              
+                <div class="card-footer border-top border-info">
+                  <div class="d-flex w-100 justify-content-center align-items-center">
+                    <button class="btn btn-flat  bg-gradient-primary mx-2" type="submit">Save</button>
+                    <a class="btn btn-flat bg-gradient-secondary mx-2" href="{% url 'home' %}">Cancel</a>
+                  </div>
+                </div>
+              </div>
+              </div>
+              </div>
+              
+              </div>
+              </form>
+       
+          
+          
+          
+          
+          <script>
+           
+          
+            $('#new_parcel').click(function() {
+              var tr1 = "'tr'";
+          
+              var str = '<tr><td><input type="text" name="articles" id="articles" class="form-control" value="" required></td><td><input type="text" name="topay" id="topay" class="form-control" value="" required></td><td><input type="text" name="paid" id="paid" class="form-control" value=""></td><td><button class="btn btn-sm btn-danger" type="button" onclick="$(this).closest('+tr1+').remove() && calc()"><i class="fa fa-times"></i></button></td></tr>';
+         
+          
+            $('#parcel-items tbody').append(str)
+            z++;
+            })
+            
+          </script>
+          
+          
+          
+         
+
+  

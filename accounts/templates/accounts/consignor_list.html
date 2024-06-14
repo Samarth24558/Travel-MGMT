@@ -1,0 +1,74 @@
+{% include 'accounts/header.html' %}
+{% include 'accounts/sidebar.html' %}
+{% include 'accounts/topbar.html' %}
+
+
+
+    
+    <div class="content-wrapper">
+    <div class="container-fluid">
+    <div class="content-header">
+    <section class="content">
+<div class="col-lg-12">
+	<div class="card card-outline card-primary">
+		<div class="card-header">
+			<div class="card-tools">
+				<a class="btn btn-block btn-sm btn-default btn-flat border-primary " href="{% url 'consignor_insert' %}"><i class="fa fa-plus"></i> Add New</a>
+			</div>
+		</div>
+		<div class="card-body">
+        <div class="table-responsive">
+			
+				
+			<table class="table tabe-hover table-bordered" id="list">
+				<thead>
+					<tr>
+						<th class="text-center">SI NO</th>
+						<th>Consignor's Name</th>
+						<th>Consignor's Ph No</th>
+                        <th>Consignor's Address</th>
+                        <th>Consignor's GST No.</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					
+					{% for i in list %}
+					<tr>
+						<td class="text-center"><b><center>{{i.id}}</center></b></td>
+						<td><b><center>{{i.consignor_name}}</center></b></td>
+						<td><b><center>{{i.consignor_phno}}</center></b></td>
+						
+						<td><b><center>{{i.consignor_addr}}</center></b></td>
+						
+						<td><b><center>{{i.consignor_gst}}</center></b></td>
+
+					
+                        
+						<td class="text-center">
+		                    <div class="btn-group">		
+							<a href="index.php?page=pancard_view&id=<?php echo $row['id'] ?>" class="btn btn-warning btn-flat " >
+                              <i class="fas fa-eye"></i></a>
+
+							  <a href="index.php?page=agent_edit&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
+                              <i class="fas fa-edit"></i></a>
+
+
+                        {% endfor %}	
+						
+						</div>
+						</td>
+					</tr>	
+			
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+	table td{
+		vertical-align: middle !important;
+	}
+</style>
