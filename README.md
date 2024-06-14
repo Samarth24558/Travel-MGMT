@@ -1,2 +1,2 @@
-# Nursery-MGMT
-Django nursery management system
+# Travel-MGMT
+Django travel management system
